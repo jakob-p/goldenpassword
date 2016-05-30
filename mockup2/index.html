@@ -65,31 +65,27 @@
     <div class="section">
       <div class="container">
         <div class="row">
-          <div class="col-md-3 gridborder">
-            <a href="#" class="border">
+          <div class="col-md-3 gridborder" data-target=".bs-example-modal-sm" data-toggle="modal">
+            <a  class="border">
               <img src="image/google.png" class="center-block img-responsive">
               <div class="caption">
                 <i class="fa fa-3x fa-close pull-right text-danger"></i> <!-- <i class="fa fa-3x fa-close text-danger"></i> -->
               </div>
             </a>
           </div>
-          <div class="col-md-3 gridborder">
-            <a href="#">
+          <div class="col-md-3 gridborder" data-target=".youtube" data-toggle="modal">
               <img src="image/youtube.jpg" class="center-block img-responsive">
               <div class="caption">
                 <i class="fa fa-3x fa-close pull-right text-danger"></i> <!-- <i class="fa fa-3x fa-close text-danger"></i> -->
               </div>
-            </a>
           </div>
-          <div class="col-md-3 gridborder">
-            <a href="#">
+          <div class="col-md-3 gridborder" data-target=".facebook" data-toggle="modal">
               <img src="image/facebook.png" class="center-block img-responsive">
               <div class="caption">
                 <i class="fa fa-3x fa-check pull-right text-success"></i> <!-- <i class="fa fa-3x fa-close text-danger"></i> -->
               </div>
-            </a>
           </div>
-          <div class="col-md-3 gridborder">
+          <div class="col-md-3 gridborder" data-target=".amazon" data-toggle="modal">
             <a href="#">
               <img src="image/amazon.png" class="center-block img-responsive">
               <div class="caption">
@@ -100,23 +96,256 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="test">
-      <div class="modal-dialog">
+
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-md">
         <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title">Modal title</h4>
+
+          <div>
+
+            <img src="image/google.png" class="center-block img-responsive">
+            <h3 class="text-center">google.de <i class="fa fa-close text-danger"></i>
+            </h3>
+
+            <div class="row">
+              <div class="col-md-4">Passwort Suggestion</div>
+              <div class="col-md-8">            <form>
+                <div class="input-group">
+                  <input type="text" class="form-control"
+                         value="banana4.2X" placeholder="Some path" id="copy-input">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button" id="copy-button"
+              data-toggle="tooltip" data-placement="button"
+              title="Copy to Clipboard">
+        Copy
+      </button>
+    </span>
+                </div>
+              </form></div>
+            </div>
+
+            <ul class="list-group">
+              <li class="list-group-item"><h4>mandatory</h4></li>
+              <li class="list-group-item">minimum length
+                <span class="label label-danger pull-right">&gt; n</span>
+              </li>
+              <li class="list-group-item">maximum length
+                <span class="label label-success pull-right">&lt; n</span>
+              </li>
+              <li class="list-group-item"><h4>optional</h4></li>
+                <li class="list-group-item">numbers
+                  <span class="label label-default pull-right">123</span>
+                </li>
+              <li class="list-group-item">uppercase letters
+                <span class="label label-default pull-right">ABC</span>
+              </li>
+              <li class="list-group-item">lowercase letters
+                <span class="label label-success pull-right">abc</span>
+              </li>
+              <li class="list-group-item"><h4>not allowed</h4></li>
+              <li class="list-group-item">special characters
+                <span class="label label-default pull-right">!"§$%&amp;</span>
+              </li>
+              <li class="list-group-item">dictionary check
+                <span class="label label-default pull-right">password1</span>
+              </li>
+            </ul>
+
           </div>
-          <div class="modal-body">
-            <p>One fine body...</p>
-          </div>
-          <div class="modal-footer">
-            <a class="btn btn-default" data-dismiss="modal">Close</a>
-            <a class="btn btn-primary">Save changes</a>
-          </div>
+
+
+
         </div>
       </div>
     </div>
-  
+
+
+    <div class="modal fade youtube" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+          <div>
+
+            <img src="image/youtube.jpg" class="center-block img-responsive">
+            <h3 class="text-center">youtube.com<i class="fa fa-close text-danger"></i>
+            </h3>
+
+            <div class="row">
+              <div class="col-md-4">Passwort Suggestion</div>
+              <div class="col-md-8">            <form>
+                <div class="input-group">
+                  <input type="text" class="form-control"
+                         value="banana4.2X" placeholder="Some path" id="copy-input">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button" id="copy-button"
+              data-toggle="tooltip" data-placement="button"
+              title="Copy to Clipboard">
+        Copy
+      </button>
+    </span>
+                </div>
+              </form></div>
+            </div>
+
+            <ul class="list-group">
+              <li class="list-group-item"><h4>mandatory</h4></li>
+              <li class="list-group-item">minimum length
+                <span class="label label-danger pull-right">&gt; 7</span>
+              </li>
+              <li class="list-group-item">maximum length
+                <span class="label label-success pull-right">&lt; n</span>
+              </li>
+              <li class="list-group-item"><h4>optional</h4></li>
+              <li class="list-group-item">numbers
+                <span class="label label-default pull-right">123</span>
+              </li>
+              <li class="list-group-item">uppercase letters
+                <span class="label label-default pull-right">ABC</span>
+              </li>
+              <li class="list-group-item">lowercase letters
+                <span class="label label-success pull-right">abc</span>
+              </li>
+              <li class="list-group-item"><h4>not allowed</h4></li>
+              <li class="list-group-item">special characters
+                <span class="label label-default pull-right">!"§$%&amp;</span>
+              </li>
+              <li class="list-group-item">dictionary check
+                <span class="label label-default pull-right">password1</span>
+              </li>
+            </ul>
+
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade facebook" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+          <div>
+
+            <img src="image/facebook.png" class="center-block img-responsive">
+            <h3 class="text-center">facebook.com<i class="fa fa-check text-success"></i>
+            </h3>
+
+            <div class="row">
+              <div class="col-md-4">Passwort Suggestion</div>
+              <div class="col-md-8">            <form>
+                <div class="input-group">
+                  <input type="text" class="form-control"
+                         value="banana4.2X" placeholder="Some path" id="copy-input">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button" id="copy-button"
+              data-toggle="tooltip" data-placement="button"
+              title="Copy to Clipboard">
+        Copy
+      </button>
+    </span>
+                </div>
+              </form></div>
+            </div>
+
+            <ul class="list-group">
+              <li class="list-group-item"><h4>mandatory</h4></li>
+              <li class="list-group-item">minimum length
+                <span class="label label-success pull-right">&gt; 7</span>
+              </li>
+              <li class="list-group-item">maximum length
+                <span class="label label-success pull-right">&lt; n</span>
+              </li>
+              <li class="list-group-item"><h4>optional</h4></li>
+              <li class="list-group-item">numbers
+                <span class="label label-default pull-right">123</span>
+              </li>
+              <li class="list-group-item">uppercase letters
+                <span class="label label-default pull-right">ABC</span>
+              </li>
+              <li class="list-group-item">lowercase letters
+                <span class="label label-success pull-right">abc</span>
+              </li>
+              <li class="list-group-item"><h4>not allowed</h4></li>
+              <li class="list-group-item">special characters
+                <span class="label label-default pull-right">!"§$%&amp;</span>
+              </li>
+              <li class="list-group-item">dictionary check
+                <span class="label label-default pull-right">password1</span>
+              </li>
+            </ul>
+
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade amazon" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+          <div>
+
+            <img src="image/amazon.png" class="center-block img-responsive">
+            <h3 class="text-center">amazon.com<i class="fa fa-check text-success"></i>
+            </h3>
+
+            <div class="row">
+              <div class="col-md-4">Passwort Suggestion</div>
+              <div class="col-md-8">            <form>
+                <div class="input-group">
+                  <input type="text" class="form-control"
+                         value="banana4.2X" placeholder="Some path" id="copy-input">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button" id="copy-button"
+              data-toggle="tooltip" data-placement="button"
+              title="Copy to Clipboard">
+        Copy
+      </button>
+    </span>
+                </div>
+              </form></div>
+            </div>
+
+            <ul class="list-group">
+              <li class="list-group-item"><h4>mandatory</h4></li>
+              <li class="list-group-item">minimum length
+                <span class="label label-success pull-right">&gt; 5</span>
+              </li>
+              <li class="list-group-item">maximum length
+                <span class="label label-success pull-right">&lt; n</span>
+              </li>
+              <li class="list-group-item"><h4>optional</h4></li>
+              <li class="list-group-item">numbers
+                <span class="label label-default pull-right">123</span>
+              </li>
+              <li class="list-group-item">uppercase letters
+                <span class="label label-default pull-right">ABC</span>
+              </li>
+              <li class="list-group-item">lowercase letters
+                <span class="label label-success pull-right">abc</span>
+              </li>
+              <li class="list-group-item"><h4>not allowed</h4></li>
+              <li class="list-group-item">special characters
+                <span class="label label-default pull-right">!"§$%&amp;</span>
+              </li>
+              <li class="list-group-item">dictionary check
+                <span class="label label-default pull-right">password1</span>
+              </li>
+            </ul>
+
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
 
 </body></html>
