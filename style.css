@@ -12,6 +12,15 @@
  *   box-shadow : 0px 0px 10px black !important;
  * }
 */
+
+
+body{
+  min-width:513px; /* suppose you want minimun width of 1000px */
+  width: auto !important;  /* Firefox will set width as auto */
+  width:513px;             /* As IE ignores !important it will set width as 1000px; */
+}
+
+
 .label {
   display: inline;
   padding: .2em .6em .3em;
