@@ -14,15 +14,21 @@
 */
 @import url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
 
+.navbar-default .navbar-nav>li>a {
+  color: #080808 !important;
+  font-weight: 700 !important;
+}
+
 .panel-heading a:after {
   font-family: 'FontAwesome' !important;
   content: "\f078";
   float: right;
   color: grey;
 }
-
-
-
+.navbar-default .navbar-brand {
+  color: #FFF !important;
+  font-weight: 700 !important;
+}
 
 body{
   min-width:513px; /* suppose you want minimun width of 1000px */
