@@ -11,3 +11,21 @@
     cursor: pointer;
 }
 
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 10px;
+    max-width: 70%;
+    margin-left: 15%;
+    /* padding: 3; */
+}
+.close {
+    float: right;
+    font-size: 39px;
+    font-weight: bold;
+    /* line-height: 1; */
+    color: #000000;
+    text-shadow: 0 1px 0 #ffffff;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
