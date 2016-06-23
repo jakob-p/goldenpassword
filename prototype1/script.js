@@ -24,8 +24,11 @@ var app = angular.module('goldenPasswordApp', [])
                 function validate(password) {
                     var passwordRules = scope.rowObject.passwordRules;
 
-                    var min = new RegExp('.{' + passwordRules.minimalLength + ',}$');
-                    var max = new RegExp('.{0,' + passwordRules.maximalLength + '}$');
+                    var min = new RegExp('[^]{' + passwordRules.minimalLength + ',}');
+                    
+                    if (passwordRules.maximalLength != 0) {
+                        var max = new RegExp('^[^]{,' + passwordRules.maximalLength + '}$');
+                    }
 
                     if (passwordRules.lowercaseLetters != 2) {
                         if (passwordRules.lowercaseLetters == 3) {
@@ -54,7 +57,7 @@ var app = angular.module('goldenPasswordApp', [])
                         }
                     }
                     return min.test(scope.password) 
-                    && max.test(scope.password) 
+                    && (!max || max.test(scope.password)) 
                     && (!lcL || lcL.test(scope.password)) 
                     && (!upL || upL.test(scope.password))
                     && (!num || num.test(scope.password));
