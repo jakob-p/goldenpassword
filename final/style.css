@@ -551,7 +551,10 @@
   background-color: #ffccbc;
 }
 @media screen and (max-width: 767px) {
-
+  input.form-control.main {
+    height: 40px;
+    font-size: 30px;
+  }
   .input-group.mobilefilter {
     width: 80%;
     margin-left: auto;
@@ -624,10 +627,7 @@ tr td:first-child{
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
-input.form-control.main {
-  height: 40px;
-  font-size: 30px;
-}
+
 
 .input-group.mobilefilter {
 visibility: hidden;
