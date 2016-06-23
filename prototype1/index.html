@@ -15,7 +15,7 @@
     <script src="script.js"></script>
 </head>
 
-<body ng-app="goldenPasswordApp">
+<body ng-app="goldenPasswordApp" ng-controller="fetchGridData">
     <div class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -80,7 +80,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <gp-website-grid ng-controller="fetchGridData"></gp-website-grid>
+                    <gp-website-grid></gp-website-grid>
 
                 </div>
             </div>

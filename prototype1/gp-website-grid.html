@@ -19,11 +19,10 @@
                 <img ng-src="{{row.icon}}" class="img-logo" />{{row.url}}
             </td>
             <td>
-                <i class="fa fa-2x fa-close fa-fw text-danger"></i>
+                <gp-valid-cell password="password" row-object="row"></gp-valid-cell>
             </td>
             <td>
-                <span class="label label-danger listlabel" ng-if="row.passwordRules.minimalLength > 0">{{"&gt;" + row.passwordRules.minimalLength}}</span>
-                <span class="label label-danger listlabel" ng-if="row.passwordRules.maximalLength > 0">{{"&lt;" + row.passwordRules.maximalLength}}</span>
+                <gp-mandatory-cell></gp-mandatory-cell>
             </td>
             <td>
                 <span class="label label-default listlabel">!"§$%&amp;</span>
