@@ -1,0 +1,40 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                <div class="input-group filter"> <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> page </span>
+
+                    <input id="filter" type="text" class="form-control" placeholder="e.g. google"></input>
+                </div>
+            </th>
+            <th>valid</th>
+            <th>mandatory</th>
+            <th>not allowed</th>
+            <th>suggestion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="row in gridData.passwordRuleObjects">
+            <td>
+                <img ng-src="{{row.icon}}" class="img-logo" />{{row.url}}
+            </td>
+            <td>
+                <gp-valid-cell password="password" row-object="row"></gp-valid-cell>
+            </td>
+            <td>
+                <gp-mandatory-cell></gp-mandatory-cell>
+            </td>
+            <td>
+                <span class="label label-default listlabel">!"§$%&amp;</span>
+            </td>
+            <td>
+                <div class="input-group generator">
+                    <input type="text" class="form-control" value="banana4.2X" placeholder="Some path" id="copy-input"></input>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info" type="button" id="copy-button" data-toggle="tooltip" data-placement="button" title="Copy to Clipboard">Copy</button>
+                    </span>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
