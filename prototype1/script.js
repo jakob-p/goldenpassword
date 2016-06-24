@@ -25,42 +25,40 @@ var app = angular.module('goldenPasswordApp', [])
                     var passwordRules = scope.rowObject.passwordRules;
 
                     var min = new RegExp('[^]{' + passwordRules.minimalLength + ',}');
-                    
                     if (passwordRules.maximalLength != 0) {
-                        var max = new RegExp('^[^]{,' + passwordRules.maximalLength + '}$');
+                        var max = new RegExp('^[^]{0,' + passwordRules.maximalLength + '}$');
+                    }
+                    var lcL = /[a-z]+/;
+                    var upL = /[A-Z]+/;
+                    var num = /[0-9]+/;
+                    var ascii = /[\x21-\xFF]+/;
+                    var unicode = /[^\x00-\xFF]+/;
+                    if (passwordRules.allowedSymbols != "") {
+                        var allowed = new RegExp('[' + passwordRules.allowedSymbols + ']+');
+                    }
+                    if (passwordRules.forbiddenSymbols != "") {
+                        var restricted = new RegExp('[' + passwordRules.forbiddenSymbols + ']+');
                     }
 
-                    if (passwordRules.lowercaseLetters != 2) {
-                        if (passwordRules.lowercaseLetters == 3) {
-                            var lcL = new RegExp(/[a-z]+/);
-                        } else {
-                            console.error('value lowercaseLetters not expected/implemented');
-                            console.error(scope.rowObject);
-                        }
-                    }
+                    var containsLcL = lcL.test(scope.password);
+                    var containsUpL = lcL.test(scope.password);
+                    var containsNum = num.test(scope.password);
+                    var containsAscii = ascii.test(scope.password);
+                    var containsUnicode = unicode.test(scope.password);
+                    var containsAllowed = allowed.test(scope.password);
+                    var containsRestricted = allowed.test(scope.password);
 
-                    if (passwordRules.uppercaseLetters != 2) {
-                        if (passwordRules.uppercaseLetters == 3) {
-                            var upL = new RegExp(/[A-Z]+/);
-                        } else {
-                            console.error('value uppercaseLetters not expected/implemented');
-                            console.error(scope.rowObject);
-                        }
-                    }
+                    var count = 0;
+                    if (containsLcL) { count++; };
+                    if (containsUpL) { count++; };
+                    if (containsNum) { count++; };
+                    if (containsUnicode || containsAllowed) { count++; };
 
-                    if (passwordRules.numerals != 2) {
-                        if (passwordRules.numerals == 3) {
-                            var num = new RegExp(/[0-9]+/);
-                        } else {
-                            console.error('value numerals not expected/implemented');
-                            console.error(scope.rowObject);
-                        }
-                    }
-                    return min.test(scope.password) 
-                    && (!max || max.test(scope.password)) 
-                    && (!lcL || lcL.test(scope.password)) 
-                    && (!upL || upL.test(scope.password))
-                    && (!num || num.test(scope.password));
+                    return min.test(scope.password)
+                        && (!max || max.test(scope.password))
+                        /*&& (!lcL || lcL.test(scope.password))
+                        && (!upL || upL.test(scope.password))
+                        && (!num || num.test(scope.password));*/
                 };
 
                 scope.$watch('password', function (newValue, oldValue) {
