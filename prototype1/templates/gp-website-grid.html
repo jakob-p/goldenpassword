@@ -1,10 +1,14 @@
-<table class="table table-striped">
-    <thead>
+<div class="table-responsive-vertical shadow-z-1">
+    <!-- Table starts here -->
+    <table class="table table-mc-light-blue">
+        <thead>
         <tr>
             <th>
-                <div class="input-group filter"> <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> page </span>
+                <div class="input-group filter"><span class="input-group-addon"><span
+                        class="glyphicon glyphicon-search"></span> page </span>
 
-                    <input id="filter" type="text" class="form-control" placeholder="e.g. google" ng-model="search"></input>
+                    <input id="filter" type="text" class="form-control" placeholder="e.g. google"
+                           ng-model="search"></input>
                 </div>
             </th>
             <th>valid</th>
@@ -12,29 +16,33 @@
             <th>not allowed</th>
             <th>suggestion</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         <tr ng-repeat="row in gridData.passwordRuleObjects | filter:search">
             <td>
-                <img ng-src="{{row.icon}}" class="img-logo" />{{row.url}}
+                <img ng-src="{{row.icon}}" class="img-logo"/>{{row.url}}
             </td>
-            <td>
+            <td data-title="valid">
                 <gp-valid-cell password="password" row-object="row"></gp-valid-cell>
             </td>
-            <td>
+            <td data-title="mandatory">
                 <gp-mandatory-cell password="password" row-object="row"></gp-mandatory-cell>
             </td>
-            <td>
+            <td data-title="not allowed">
                 <gp-nallowed-cell password="password" row-object="row"></gp-nallowed-cell>
             </td>
-            <td>
+            <td data-title="suggestion">
                 <div class="input-group generator">
-                    <input type="text" class="form-control" value="banana4.2X" placeholder="Some path" id="copy-input"></input>
+                    <input type="text" class="form-control" value="banana4.2X" placeholder="Some path"
+                           id="copy-input"></input>
                     <span class="input-group-btn">
-                        <button class="btn btn-info" type="button" id="copy-button" data-toggle="tooltip" data-placement="button" title="Copy to Clipboard">Copy</button>
+                        <button class="btn btn-info" type="button" id="copy-button" data-toggle="tooltip"
+                                data-placement="button" title="Copy to Clipboard">Copy
+                        </button>
                     </span>
                 </div>
             </td>
         </tr>
-    </tbody>
-</table> 
+        </tbody>
+    </table>
+</div>
