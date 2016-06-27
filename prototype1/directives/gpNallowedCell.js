@@ -23,12 +23,16 @@ app.directive('gpNallowedCell', function () {
                     res += unicode.exec(scope.password)[0];
                 }
                 if (passwordRules.allowedSymbols != '') {
-                    var allAllowed = new RegExp('[a-zA-Z0-9' + passwordRules.allowedSymbols + ']+');
-                    res += scope.password.replace(allAllowed, '');
+                    var allowed = new RegExp('[^a-zA-Z0-9' + passwordRules.allowedSymbols + ']+');
+                    if (allowed.exec(scope.password)) {
+                        res += allowed.exec(scope.password)[0];
+                    }
                 }
                 if (passwordRules.forbiddenSymbols != '') {
                     var forbidden = new RegExp('[' + passwordRules.forbiddenSymbols + ']+');
-                    res += forbidden.exec(scope.password);
+                    if (forbidden.exec(scope.password)) {
+                        res += forbidden.exec(scope.password)[0];
+                    }
                 }
 
                 return res;
