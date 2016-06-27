@@ -12,7 +12,7 @@ app.directive('gpMandatoryCell', function () {
 
                 var min = new RegExp('[^]{' + passwordRules.minimalLength + ',}');
                 if (passwordRules.maximalLength != 0) {
-                    var max = new RegExp('^[^]{1,' + passwordRules.maximalLength + '}$');
+                    var max = new RegExp('^[^]{0,' + passwordRules.maximalLength + '}$');
                 }
                 var lcL = /[a-z]+/;
                 var upL = /[A-Z]+/;
