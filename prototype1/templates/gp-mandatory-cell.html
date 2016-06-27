@@ -1,0 +1,24 @@
+<span ng-if="rowObject.passwordRules.minimalLength > 0">
+    <span class="label label-success listlabel" ng-if="state.minL">{{'&gt;' + rowObject.passwordRules.minimalLength}}</span>
+    <span class="label label-danger listlabel" ng-if="!state.minL">{{'&gt;' + rowObject.passwordRules.minimalLength}}</span>
+</span>
+<span ng-if="rowObject.passwordRules.maximalLength > 0">
+    <span class="label label-success listlabel" ng-if="state.maxL">{{'&lt;' + rowObject.passwordRules.maximalLength}}</span>
+    <span class="label label-danger listlabel" ng-if="!state.maxL">{{'&lt;' + rowObject.passwordRules.maximalLength}}</span>
+</span>
+<span ng-if="rowObject.passwordRules.lowercaseLetters == 3">
+    <span class="label label-success listlabel" ng-if="state.lcL">a-z</span>
+    <span class="label label-danger listlabel" ng-if="!state.lcL">a-z</span>
+</span>
+<span ng-if="rowObject.passwordRules.uppercaseLetters == 3">
+    <span class="label label-success listlabel" ng-if="state.upL">A-Z</span>
+    <span class="label label-danger listlabel" ng-if="!state.upL">A-Z</span>
+</span>
+<span ng-if="rowObject.passwordRules.numerals == 3">
+    <span class="label label-success listlabel" ng-if="state.num">0-9</span>
+    <span class="label label-danger listlabel" ng-if="!state.num">0-9</span>
+</span>
+<span ng-if="rowObject.passwordRules.complexity != 'basic'">
+    <span class="label label-success listlabel" ng-if="state.complexEnough">{{rowObject.passwordRules.complexity}}</span>
+    <span class="label label-danger listlabel" ng-if="!state.complexEnough">{{rowObject.passwordRules.complexity}}</span>
+</span>
