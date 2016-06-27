@@ -11,8 +11,8 @@ app.directive('gpMandatoryCell', function () {
                 var state = {};
 
                 var min = new RegExp('[^]{' + passwordRules.minimalLength + ',}');
-                if (passwordRules.maximalLength !== 0) {
-                    var max = new RegExp('^[^]{1,' + passwordRules.maximalLength + '}$');
+                if (passwordRules.maximalLength != 0) {
+                    var max = new RegExp('^[^]{0,' + passwordRules.maximalLength + '}$');
                 }
                 var lcL = /[a-z]+/;
                 var upL = /[A-Z]+/;
@@ -27,7 +27,7 @@ app.directive('gpMandatoryCell', function () {
                 }
 
                 state.minL = min.test(scope.password);
-                state.maxL = !max || scope.password.length == 0 || max.test(scope.password);
+                state.maxL = !max || max.test(scope.password);
                 state.lcL = lcL.test(scope.password);
                 state.upL = upL.test(scope.password);
                 state.num = num.test(scope.password);
