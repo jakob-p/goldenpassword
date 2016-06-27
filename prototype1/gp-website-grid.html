@@ -4,7 +4,7 @@
             <th>
                 <div class="input-group filter"> <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> page </span>
 
-                    <input id="filter" type="text" class="form-control" placeholder="e.g. google"></input>
+                    <input id="filter" type="text" class="form-control" placeholder="e.g. google" ng-model="search"></input>
                 </div>
             </th>
             <th>valid</th>
@@ -14,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="row in gridData.passwordRuleObjects">
+        <tr ng-repeat="row in gridData.passwordRuleObjects | filter:search">
             <td>
                 <img ng-src="{{row.icon}}" class="img-logo" />{{row.url}}
             </td>
