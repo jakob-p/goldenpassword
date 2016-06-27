@@ -38,6 +38,6 @@ app.directive('gpNallowedCell', function () {
                 scope.nAllowedChars = nAllowedChars();
             });
         },
-        templateUrl: 'templates/gp-nallowed-cell.html'
+        templateUrl: 'templates/gpNallowedCell.html'
     };
 });
