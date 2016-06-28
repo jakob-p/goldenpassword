@@ -48,16 +48,17 @@ app.factory('passwordCheckService', function () {
             if (state.lcL) { count++; }
             if (state.upL) { count++; }
             if (state.num) { count++; }
-            if (state.ascii || state.unicode) { count++; }
+            if (state.ascii) { count++; }
+            if (state.unicode) { count++; }
 
-            if (passwordRules.complexity == '2class') {
-                state.complexEnough = count > 1;
+            if (/^[1-9](?=class$)/.test(passwordRules.complexity)) { // match all "xclass" complexity
+                state.complexEnough = count > (/^[1-9](?=class$)/.exec(passwordRules.complexity) - 1);
             }
-            if (passwordRules.complexity == '3class') {
-                state.complexEnough = count > 2;
+            else if (passwordRules.complexity == 'idealo') {
+                state.complexEnough = !/(.)\1{2}/.test(password);
             }
-            if (passwordRules.complexity == '4class') {
-                state.complexEnough = count > 3;
+            else if (passwordRules.complexity == 'lidl') {
+                state.complexEnough = new RegExp('[' + passwordRules.allowedSymbols + ']+').test(password);
             }
         }
         return state;
