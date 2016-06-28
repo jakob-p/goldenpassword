@@ -26,7 +26,7 @@ app.directive('gpValidCell', ['passwordCheckService', function (passwordCheckSer
             };
 
             scope.$watch('password', function (newValue, oldValue) {
-                var state = passwordCheckService(scope.password, scope.rowObject.passwordRules);
+                var state = passwordCheckService.rules(scope.password, scope.rowObject.passwordRules);
                 scope.validRow = validate(state);
             });
         },

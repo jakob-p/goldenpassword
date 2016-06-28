@@ -7,7 +7,7 @@ app.directive('gpMandatoryCell', ['passwordCheckService' , function (passwordChe
         },
         link: function (scope, elmt, attrs) {
             scope.$watch('password', function (newValue, oldValue) {
-                scope.state = passwordCheckService(scope.password, scope.rowObject.passwordRules);
+                scope.state = passwordCheckService.rules(scope.password, scope.rowObject.passwordRules);
             });
         },
         templateUrl: 'templates/gpMandatoryCell.html'
