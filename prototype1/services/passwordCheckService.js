@@ -92,16 +92,14 @@ app.factory('passwordCheckService', function () {
         }
 
         if (passwordRules.forbiddenSymbols != '') {
+            var forbiddenSymbols = passwordRules.forbiddenSymbols;
             if (passwordRules.nonAlphanumeric == 0) {
                 // remove all ascii characters from forbiddenSymbols string to avoid duplicate in res
-                var forbiddenSymbols = passwordRules.forbiddenSymbols.replace(ascii, '');
+                var forbiddenSymbols = forbiddenSymbols.replace(ascii, '');
             }
-            else if (passwordRules.unicodeCharacters == 0) {
+            if (passwordRules.unicodeCharacters == 0) {
                 // remove all unicode characters from forbiddenSymbols string to avoid duplicate
-                var forbiddenSymbols = passwordRules.forbiddenSymbols.replace(unicode, '');
-            }
-            else {
-                var forbiddenSymbols = passwordRules.forbiddenSymbols;
+                var forbiddenSymbols = forbiddenSymbols.replace(unicode, '');
             }
             var forbidden = new RegExp('[' + forbiddenSymbols + ']+');
             if (forbidden.exec(password)) {
