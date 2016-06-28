@@ -18,7 +18,7 @@ app.directive('gpValidCell', ['passwordCheckService', function (passwordCheckSer
                         || passwordRules.nonAlphanumeric == 0 && !state.ascii
                         || passwordRules.nonAlphanumeric == 1 && state.onlyAllowed && state.anyForbidden)
                     && (passwordRules.unicodeCharacters == 2
-                        || passwordRules.unicodeCharacters == 0 && !state.nicode
+                        || passwordRules.unicodeCharacters == 0 && !state.unicode
                         || passwordRules.unicodeCharacters == 1 && state.onlyAllowed && state.anyForbidden)
                     && state.onlyAllowed
                     && state.anyForbidden
