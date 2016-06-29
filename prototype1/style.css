@@ -639,8 +639,10 @@ td {
 
 
 img.img-logo {
-  max-height:70px;
+  max-height: 70px;
+  max-width: 80px;
 }
+
 .input-group.filter {
   max-width: 300px;
   min-width: 200px;
@@ -7433,3 +7435,4 @@ body {
 .width {
   font-size: 100%;
 }
+
