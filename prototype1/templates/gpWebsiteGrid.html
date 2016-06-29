@@ -20,7 +20,7 @@
         <tbody>
         <tr ng-repeat="row in gridData.passwordRuleObjects | filter:search">
             <td>
-                <img ng-src="{{row.icon}}" class="img-logo"/> {{row.url}}
+                <img ng-src="{{row.icon}}" class="img-logo"/> {{shortUrl(row.url)}}
             </td>
             <td data-title="valid">
                 <gp-valid-cell password="password" row-object="row"></gp-valid-cell>
