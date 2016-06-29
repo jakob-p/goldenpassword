@@ -1,6 +1,6 @@
 <div class="table-responsive-vertical shadow-z-1">
     <!-- Table starts here -->
-    <table class="table table-mc-light-blue">
+    <table class="table table-mc-light-default table-striped">
         <thead>
         <tr>
             <th>
@@ -20,7 +20,7 @@
         <tbody>
         <tr ng-repeat="row in gridData.passwordRuleObjects | filter:search">
             <td>
-                <img ng-src="{{row.icon}}" class="img-logo"/>{{row.url}}
+                <img ng-src="{{row.icon}}" class="img-logo"/> {{row.url}}
             </td>
             <td data-title="valid">
                 <gp-valid-cell password="password" row-object="row"></gp-valid-cell>
