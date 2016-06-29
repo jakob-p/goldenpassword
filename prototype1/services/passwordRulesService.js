@@ -1,4 +1,4 @@
-app.factory('passwordRulesService',  ['passwordClassesService', 'contiguousCharsService', function (passwordClassesService, contiguousCharsService) {
+app.factory('passwordRulesService', ['passwordClassesService', 'specialComplexitiesService', function (passwordClassesService, specialComplexitiesService) {
     var rules = function (password, passwordRules) {
         var state = passwordClassesService(password);
 
@@ -34,15 +34,8 @@ app.factory('passwordRulesService',  ['passwordClassesService', 'contiguousChars
             if (/^[1-9](?=class$)/.test(passwordRules.complexity)) { // match all "xclass" complexity
                 state.complexEnough = count > (/^[1-9](?=class$)/.exec(passwordRules.complexity) - 1);
             }
-            else if (passwordRules.complexity == 'idealo') {
-                state.complexEnough = !/(.)\1{2}/.test(password);
-            }
-            else if (passwordRules.complexity == 'lidl') {
-                state.complexEnough = new RegExp('[' + passwordRules.allowedSymbols + ']+').test(password);
-            }
-            else if (passwordRules.complexity == 'paypal') {
-                state.complexEnough = contiguousCharsService(password, 3);
-                console.log('noContiguous', state.complexEnough);
+            else {
+                state.complexEnough = specialComplexitiesService(password, passwordRules);
             }
         }
         return state;
