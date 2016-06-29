@@ -6,9 +6,7 @@ app.directive('gpSuggestionCell', ['passwordCheckService' , function (passwordCh
             password: '='
         },
         link: function (scope, elmt, attrs) {
-            /*scope.$watch('password', function (newValue, oldValue) {
-                scope.state = passwordCheckService.rules(scope.password, scope.rowObject.passwordRules);
-            });*/
+            // logic to implement (call to services, ...)
         },
         templateUrl: 'templates/gpSuggestionCell.html'
     };
