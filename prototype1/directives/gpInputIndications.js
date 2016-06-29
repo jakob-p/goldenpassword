@@ -1,4 +1,4 @@
-app.directive('gpInputIndications', ['passwordCheckService', function (passwordCheckService) {
+app.directive('gpInputIndications', ['passwordClassesService', function (passwordClassesService) {
     return {
         restrict: 'E',
         scope: {
@@ -6,7 +6,7 @@ app.directive('gpInputIndications', ['passwordCheckService', function (passwordC
         },
         link: function (scope, elmt, attrs) {
             scope.$watch('password', function (newValue, oldValue) {
-                scope.state = passwordCheckService.classes(scope.password);
+                scope.state = passwordClassesService(scope.password);
             });
         },
         templateUrl: 'templates/gpInputIndications.html'

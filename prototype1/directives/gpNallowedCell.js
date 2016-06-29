@@ -1,4 +1,4 @@
-app.directive('gpNallowedCell', ['passwordCheckService', function (passwordCheckService) {
+app.directive('gpNallowedCell', ['passwordNallowedService', function (passwordNallowedService) {
     return {
         restrict: 'E',
         scope: {
@@ -7,7 +7,7 @@ app.directive('gpNallowedCell', ['passwordCheckService', function (passwordCheck
         },
         link: function (scope, elmt, attrs) {
             scope.$watch('password', function (newValue, oldValue) {
-                scope.nAllowedChars = passwordCheckService.nallowed(scope.password, scope.rowObject.passwordRules);
+                scope.nAllowedChars = passwordNallowedService(scope.password, scope.rowObject.passwordRules);
             });
         },
         templateUrl: 'templates/gpNallowedCell.html'

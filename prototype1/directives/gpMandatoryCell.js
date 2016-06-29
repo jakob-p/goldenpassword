@@ -1,4 +1,4 @@
-app.directive('gpMandatoryCell', ['passwordCheckService' , function (passwordCheckService) {
+app.directive('gpMandatoryCell', ['passwordRulesService' , function (passwordRulesService) {
     return {
         restrict: 'E',
         scope: {
@@ -7,7 +7,7 @@ app.directive('gpMandatoryCell', ['passwordCheckService' , function (passwordChe
         },
         link: function (scope, elmt, attrs) {
             scope.$watch('password', function (newValue, oldValue) {
-                scope.state = passwordCheckService.rules(scope.password, scope.rowObject.passwordRules);
+                scope.state = passwordRulesService(scope.password, scope.rowObject.passwordRules);
             });
         },
         templateUrl: 'templates/gpMandatoryCell.html'

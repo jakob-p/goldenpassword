@@ -1,4 +1,4 @@
-app.directive('gpValidCell', ['passwordCheckService', function (passwordCheckService) {
+app.directive('gpValidCell', ['passwordRulesService', function (passwordRulesService) {
     return {
         restrict: 'E',
         scope: {
@@ -26,7 +26,7 @@ app.directive('gpValidCell', ['passwordCheckService', function (passwordCheckSer
             };
 
             scope.$watch('password', function (newValue, oldValue) {
-                var state = passwordCheckService.rules(scope.password, scope.rowObject.passwordRules);
+                var state = passwordRulesService(scope.password, scope.rowObject.passwordRules);
                 scope.validRow = validate(state);
             });
         },

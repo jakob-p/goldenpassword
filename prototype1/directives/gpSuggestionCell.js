@@ -1,4 +1,4 @@
-app.directive('gpSuggestionCell', ['passwordCheckService' , function (passwordCheckService) {
+app.directive('gpSuggestionCell', function () {
     return {
         restrict: 'E',
         scope: {
@@ -10,4 +10,4 @@ app.directive('gpSuggestionCell', ['passwordCheckService' , function (passwordCh
         },
         templateUrl: 'templates/gpSuggestionCell.html'
     };
-}]);
+});
