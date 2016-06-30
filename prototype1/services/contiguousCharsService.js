@@ -13,7 +13,7 @@ app.factory('contiguousCharsService', function () {
                 for (var j = 0; j < password.length - seqLength + 1; j++) {
                     if (element.charAt(i) === password.charAt(j)) {
                         /* return false if there is element[i]=password[j] & ... & element[i+seqLength-1]=password[j+seqLength-1] */
-                        if (i + seqLength - 1 < element.length && j + seqLength - 1 < password.length) {
+                        if (i + seqLength - 1 < element.length) {
                             var k = 1;
                             while (element.charAt(i + k) === password.charAt(j + k) && k < seqLength) {
                                 k++;
@@ -22,7 +22,7 @@ app.factory('contiguousCharsService', function () {
                                 return false;
                             }
                         }
-                        /* return false if there is element[i]=password[j] & ... & element[i-seqLength+1]=password[j-seqLength+1] */
+                        /* return false if there is element[i]=password[j] & ... & element[i-seqLength+1]=password[j+seqLength-1] */
                         if (i - seqLength + 1 >= 0) {
                             var k = 1;
                             while (element.charAt(i - k) === password.charAt(j + k) && k < seqLength) {
