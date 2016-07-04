@@ -1,4 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Lato');
+
+
+
+@media screen and (max-width: 767px) {
+  input.form-control.main {
+    height: 40px;
+    font-size: 30px;
+  }
+  .input-group.mobilefilter {
+    width: 80%;
+    margin-left: auto;
+    visibility: visible !important;
+    margin-bottom: 15px;
+  }}
+
+
 /*!
  * Default theme for Pingendo 
  * Homepage: http://pingendo.com  

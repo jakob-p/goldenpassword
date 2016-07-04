@@ -1,6 +1,10 @@
-app.factory('passwordNallowedService',  ['regexService', function (regexService) {
-var regex = regexService;
-var nallowed = function (password, passwordRules) {
+app.factory('passwordNallowedService', ['regexService', 'dictionaryService', function (regexService, dictionaryService) {
+    var regex = regexService;
+    var dictionary = dictionaryService;
+    var nallowed = function (password, passwordRules) {
+
+        console.log(passwordRules);
+
         var res = '';
 
         if (passwordRules.nonAlphanumeric == 0 && regex.ascii.exec(password)) {
@@ -44,6 +48,11 @@ var nallowed = function (password, passwordRules) {
             }
         }
 
+        if (passwordRules.dictionaryCheck == 'yes') {
+            if (dictionaryService(password)) {
+                res += 'dictionary';
+            }
+        }
         return res;
     };
 
