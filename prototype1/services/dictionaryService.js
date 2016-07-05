@@ -3,7 +3,6 @@ app.factory('dictionaryService', function () {
     var dictionaryCheck = function (password) {
 
         if (password != '' && savedResults[password] === undefined) {
-            console.log(password);
             var check = zxcvbn(password);
             if (check.sequence.length < 2) {
                 if (check.sequence[0].pattern == 'dictionary') {

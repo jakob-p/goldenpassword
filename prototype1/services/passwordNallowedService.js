@@ -1,9 +1,7 @@
 app.factory('passwordNallowedService', ['regexService', 'dictionaryService', function (regexService, dictionaryService) {
     var regex = regexService;
-    var dictionary = dictionaryService;
+    //? var dictionary = dictionaryService;
     var nallowed = function (password, passwordRules) {
-
-        console.log(passwordRules);
 
         var res = '';
 
