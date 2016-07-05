@@ -32,7 +32,7 @@ app.factory('passwordRulesService', ['passwordClassesService', 'specialComplexit
             if (state.unicode) { count++; }
 
             if (/^[1-9](?=class$)/.test(passwordRules.complexity)) { // match all "xclass" complexity
-                state.complexEnough = count > (/^[1-9](?=class$)/.exec(passwordRules.complexity) - 1);
+                state.complexEnough = count > (/^[1-9](?=class$)/.exec(passwordRules.complexity)[0] - 1);
             }
             else {
                 state.complexEnough = specialComplexitiesService(password, passwordRules);

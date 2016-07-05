@@ -5,11 +5,11 @@ app.factory('passwordNallowedService', ['regexService', 'dictionaryService', fun
 
         var res = '';
 
-        if (passwordRules.nonAlphanumeric == 0 && regex.ascii.exec(password)) {
+        if (passwordRules.nonAlphanumeric == 0 && regex.ascii.test(password)) {
             var asciiMatch = regex.ascii.exec(password)[0]
             res += asciiMatch;
         }
-        if (passwordRules.unicodeCharacters == 0 && regex.unicode.exec(password)) {
+        if (passwordRules.unicodeCharacters == 0 && regex.unicode.test(password)) {
             var unicodeMatch = regex.unicode.exec(password)[0];
             res += unicodeMatch;
         }
@@ -25,7 +25,7 @@ app.factory('passwordNallowedService', ['regexService', 'dictionaryService', fun
                 allowedSymbols += unicodeMatch;
             }
             var nallowed = new RegExp('[^a-zA-Z0-9' + allowedSymbols + ']+');
-            if (nallowed.exec(password)) {
+            if (nallowed.test(password)) {
                 res += nallowed.exec(password)[0];
             }
         }
@@ -41,7 +41,7 @@ app.factory('passwordNallowedService', ['regexService', 'dictionaryService', fun
                 var forbiddenSymbols = forbiddenSymbols.replace(regex.unicode, '');
             }
             var forbidden = new RegExp('[' + forbiddenSymbols + ']+');
-            if (forbidden.exec(password)) {
+            if (forbidden.test(password)) {
                 res += forbidden.exec(password)[0];
             }
         }
