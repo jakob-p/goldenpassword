@@ -2,7 +2,6 @@ app.directive('gpValidCounter', ['passwordValidService', function (passwordValid
     return {
         restrict: 'E',
         scope: {
-            data: '=',
             password: '='
         },
         link: function (scope, elmt, attrs) {
@@ -10,15 +9,17 @@ app.directive('gpValidCounter', ['passwordValidService', function (passwordValid
                 scope.validCount = 0;
                 scope.invalideCount = 0;
 
-                for( var i = 0; i < scope.data.passwordRuleObjects.lenght; i++) {
-                    if (passwordValidService(scope.password, scope.data.passwordRuleObjects[i].passwordRules)) {
-                        validCount++;
+                for( var i = 0; i < scope.$parent.gridData.passwordRuleObjects.length; i++) {
+                    if (passwordValidService(scope.password, 
+                        scope.$parent.gridData.passwordRuleObjects[i].passwordRules)) {
+                        scope.validCount++;
                     }
                     else {
-                        invalideCount++;
+                        scope.invalideCount++;
                     }
                 }
-            });
+                
+            });    
         },
         templateUrl: 'templates/gpValidCounter.html'
     };
