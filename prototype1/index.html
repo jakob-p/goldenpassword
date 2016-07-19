@@ -29,6 +29,7 @@
     <script src="directives/gpMandatoryCell.js"></script>
     <script src="directives/gpNallowedCell.js"></script>
     <script src="directives/gpSuggestionCell.js"></script>
+    <script src="directives/gpValidCounter.js"></script>
 </head>
 
 <body ng-app="goldenPasswordApp" ng-controller="fetchGridData">
@@ -83,6 +84,7 @@
                         </div>
                     </div>
                 </form>
+                <gp-valid-counter password="password" data="grid-data"></gp-valid-counter>
                 <gp-input-indications password="password"></gp-input-indications>
             </div>
         </div>
