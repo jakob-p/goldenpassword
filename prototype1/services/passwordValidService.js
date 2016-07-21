@@ -12,7 +12,7 @@ app.factory('passwordValidService', ['passwordRulesService', 'dictionaryService'
         function setSuggestions(){
             if (!valid) {
                 var suggestion = '';
-                if (password.length > 0||true) {
+                if (password.length > 0) {
                     suggestion = suggestionService.getSuggestions(password, state, passwordRules);
                 }
 
