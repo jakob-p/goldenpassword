@@ -1,4 +1,4 @@
-<div class="input-group generator"  ng-style="{'visibility': password.length>0?'visible':'hidden'}">
+<div class="input-group generator"  ng-style="{'visibility': (password.length>0&&$root.showSuggestions[index]==true)?'visible':'hidden'}">
     <input type="text" class="form-control" placeholder="Some path" ng-model="$root.suggestions[index]" id="input{{index}}"></input>
     <span class="input-group-btn">
                         <button class="btn btn-default" type="button" id="copy-button" data-toggle="tooltip"

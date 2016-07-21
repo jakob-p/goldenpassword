@@ -1,34 +1,31 @@
-app.factory('passwordValidService', ['passwordRulesService', 'dictionaryService', '$rootScope', '$http', function (passwordRulesService, dictionaryService, $rootScope, $http) {
+app.factory('passwordValidService', ['passwordRulesService', 'dictionaryService', '$rootScope', 'suggestionService', function (passwordRulesService, dictionaryService, $rootScope, suggestionService) {
 
-    $rootScope.forbiddenChars = [];
-    for (var i = 0; i < 2; i++) {
-        $http.get('http://randomword.setgetgo.com/get.php').then(function (response) {
-            $rootScope.randomWords.push(response.data);
-        });
-    }
+
 
     return function (password, passwordRules, index) {
         var state = passwordRulesService(password, passwordRules);
         var valid = isValid(state, password);
 
-        if (!valid) {
-            var suggestion = '';
-            if (password.length > 0) {
-                suggestion = getSugestion(password, state, passwordRules);
-            }
+        setSuggestions();
+        return valid;
 
-            if (isValid(passwordRulesService(suggestion, passwordRules), suggestion)) {
-                $rootScope.suggestions[index] = suggestion;
-                $rootScope.showSuggestions[index] = true;
+        function setSuggestions(){
+            if (!valid) {
+                var suggestion = '';
+                if (password.length > 0||true) {
+                    suggestion = suggestionService.getSuggestions(password, state, passwordRules);
+                }
+
+                if (isValid(passwordRulesService(suggestion, passwordRules), suggestion)) {
+                    $rootScope.suggestions[index] = suggestion;
+                    $rootScope.showSuggestions[index] = true;
+                } else {
+                    $rootScope.showSuggestions[index] = false;
+                }
             } else {
                 $rootScope.showSuggestions[index] = false;
             }
-        } else {
-            $rootScope.showSuggestions[index] = false;
         }
-
-
-        return valid;
 
         function isValid(state, password) {
             var valid =
@@ -51,50 +48,6 @@ app.factory('passwordValidService', ['passwordRulesService', 'dictionaryService'
             return valid;
         }
 
-        function getSugestion(password, state, passwordrules) {
 
-            var suggestion = password;
-
-            if (passwordrules.dictionaryCheck == 'yes' && dictionaryService(suggestion)) {
-                suggestion = suggestion + $rootScope.randomWords[0];
-            }
-
-            if (passwordrules.complexity == '2class' || passwordrules.complexity == '3class' || passwordrules.complexity == 'lidl') {
-                suggestion = addNumber(suggestion);
-                suggestion = addCapitalizedWord(suggestion);
-            }
-
-
-            if (passwordrules.minimalLength > suggestion.length) {
-                suggestion = addWord(suggestion);
-            }
-
-            if (passwordrules.minimalLength > suggestion.length) {
-                suggestion = addCapitalizedWord(suggestion);
-            }
-
-            if (passwordrules.maximalLength != 0 && passwordrules.maximalLength < suggestion.length) {
-                suggestion = suggestion.substring(0, passwordrules.maximalLength);
-            }
-
-            return suggestion;
-        }
-
-        function addWord(password) {
-            return password + $rootScope.randomWords[0];
-        }
-
-
-        function addCapitalizedWord(password) {
-            return password + capitalizeFirstLetter($rootScope.randomWords[1]);
-            function capitalizeFirstLetter(string) {
-                return string.charAt(0).toUpperCase() + string.slice(1);
-            }
-        }
-
-        function addNumber(password) {
-            var number = Math.floor(Math.random() * 9) + 1;
-            return '' + number + password;
-        }
     }
 }]);

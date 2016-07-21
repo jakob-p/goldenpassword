@@ -24,6 +24,7 @@
     <script src="services/specialComplexitiesService.js"></script>
     <script src="services/passwordValidService.js"></script>
     <script src="services/dictionaryService.js"></script>
+    <script src="services/suggestionService.js"></script>
     <script src="services/passwordNallowedService.js"></script>
     <script src="directives/gpInputIndications.js"></script>
     <script src="directives/gpWebsiteGrid.js"></script>
@@ -32,6 +33,9 @@
     <script src="directives/gpNallowedCell.js"></script>
     <script src="directives/gpSuggestionCell.js"></script>
     <script src="directives/gpValidCounter.js"></script>
+    <script src="controllers/refreshController.js"></script>
+
+
 </head>
 
 <body ng-app="goldenPasswordApp" ng-controller="fetchGridData">
@@ -102,6 +106,9 @@
 
                     <input id="filter" type="text" class="form-control" placeholder="e.g. google" ng-model="search">
                 </div>
+                <button class="btn btn-primary pull-right" ng-controller="RefreshController" ng-click="refreshSuggestions();"><span class="glyphicon glyphicon-refresh
+  " ></span> New Suggestions
+                </button>
                 <gp-website-grid></gp-website-grid>
 
             </div>
