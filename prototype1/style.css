@@ -1,6 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Lato');
 
+.generator {
+  width: 100%;
+  max-width: 500px;
+}
 
+@media screen and (max-width: 650px) {
+
+  .generator {
+    width: 70%;
+    max-width: 500px;
+  }
+
+}
+body{
+  min-width:300px; /* suppose you want minimun width of 1000px */
+  width: auto !important;  /* Firefox will set width as auto */
+  width:300px;             /* As IE ignores !important it will set width as 1000px; */
+}
 
 @media screen and (max-width: 767px) {
   input.form-control.main {
@@ -667,10 +684,7 @@ img.img-logo {
 span.label.listlabel {
   line-height: 30px !important;
 }
-.generator {
-  width: 70%;
-  max-width: 300px;
-}
+
 
 .label {
   display: inline;

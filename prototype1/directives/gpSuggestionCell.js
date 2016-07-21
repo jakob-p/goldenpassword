@@ -1,8 +1,9 @@
-app.directive('gpSuggestionCell', function () {
+app.directive('gpSuggestionCell', function ($rootScope) {
     return {
         restrict: 'E',
         scope: {
             rowObject: '=',
+            index: '=',
             password: '='
         },
         link: function (scope, elmt, attrs) {

@@ -1,8 +1,9 @@
-<div class="input-group generator">
-    <input type="text" class="form-control" placeholder="Some path" id="copy-input" ng-model="password"></input>
+<div class="input-group generator"  ng-style="{'visibility': password.length>0?'visible':'hidden'}">
+    <input type="text" class="form-control" placeholder="Some path" ng-model="$root.suggestions[index]" id="input{{index}}"></input>
     <span class="input-group-btn">
-                        <button class="btn btn-info" type="button" id="copy-button" data-toggle="tooltip"
-                                data-placement="button" title="Copy to Clipboard">Copy
+                        <button class="btn btn-default" type="button" id="copy-button" data-toggle="tooltip"
+                                data-placement="button" title="Copy to Clipboard" ngclipboard data-clipboard-target="#input{{index}}">     <span class="glyphicon glyphicon-ok text-success"></span>
+                            Copy
                         </button>
                     </span>
 </div>

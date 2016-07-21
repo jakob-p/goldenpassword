@@ -18,21 +18,21 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="row in gridData.passwordRuleObjects | filter:search">
+        <tr ng-repeat="row in gridData.passwordRuleObjects | filter:search track by $index">
             <td>
                 <img ng-src="{{row.icon}}" class="img-logo"/> {{shortUrl(row.url)}}
             </td>
             <td data-title="valid">
-                <gp-valid-cell password="password" row-object="row"></gp-valid-cell>
+                <gp-valid-cell password="password" row-object="row" index="$index"></gp-valid-cell>
             </td>
             <td data-title="mandatory">
-                <gp-mandatory-cell password="password" row-object="row"></gp-mandatory-cell>
+                <gp-mandatory-cell password="password" row-object="row" index="$index"></gp-mandatory-cell>
             </td>
             <td data-title="not allowed">
-                <gp-nallowed-cell password="password" row-object="row"></gp-nallowed-cell>
+                <gp-nallowed-cell password="password" row-object="row" index="$index"></gp-nallowed-cell>
             </td>
             <td data-title="suggestion">
-                <gp-suggestion-cell password="password" row-object="row"></gp-suggestion-cell>
+                <gp-suggestion-cell row-object="row" password="password" index="$index" ng-if="showSuggestions[$index]==true"></gp-suggestion-cell>
             </td>
         </tr>
         </tbody>
