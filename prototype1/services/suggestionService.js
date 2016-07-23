@@ -15,7 +15,7 @@ app.factory('suggestionService', function (dictionaryService, $rootScope, $http)
         if (passwordrules.complexity == '2class' || passwordrules.complexity == '3class' || passwordrules.complexity == 'bahn' || passwordrules.complexity == 'outbrain') {
             suggestion = addNumber(suggestion);
             suggestion = addCapitalizedWord(suggestion);
-        } else if (passwordrules.maximalLength == 0 || passwordrules.maximalLength > (suggestion.length + 8)) {
+        } else  {
             suggestion = addWord(suggestion);
         }
 
@@ -23,6 +23,10 @@ app.factory('suggestionService', function (dictionaryService, $rootScope, $http)
             suggestion = addNumber(suggestion);
             suggestion = addRandomChar(suggestion, '@#$%ˆ&+=.:-!?');
             suggestion = addCapitalizedWord(suggestion);
+        }
+
+        if (passwordrules.maximalLength == 0 || passwordrules.maximalLength > (suggestion.length + 8)) {
+            suggestion = addWord(suggestion);
         }
 
         if (passwordrules.minimalLength > suggestion.length) {
