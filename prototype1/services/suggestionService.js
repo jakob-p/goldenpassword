@@ -1,4 +1,5 @@
 app.factory('suggestionService', function (dictionaryService, $rootScope, $http) {
+    $http.defaults.useXDomain = true;
 
     $rootScope.forbiddenChars = [];
 

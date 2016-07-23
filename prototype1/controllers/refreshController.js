@@ -1,4 +1,5 @@
 app.controller('RefreshController', ['$scope','$rootScope','$q','$http', function ($scope,$rootScope,$q,$http) {
+    $http.defaults.useXDomain = true;
 
         $scope.refreshSuggestions = function () {
 
