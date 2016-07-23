@@ -12,18 +12,26 @@ app.factory('suggestionService', function (dictionaryService, $rootScope, $http)
         var suggestion = password;
 
 
+        if (passwordrules.complexity == '2class') {
+            if (passwordrules.numerals==3){
+                suggestion = addNumber(suggestion);
+            } else {
+                suggestion = addCapitalizedWord(suggestion);
+
+            }
+        } else
         if (passwordrules.complexity == '2class' || passwordrules.complexity == '3class' || passwordrules.complexity == 'bahn' || passwordrules.complexity == 'outbrain') {
             suggestion = addNumber(suggestion);
+            suggestion = addCapitalizedWord(suggestion);
+        } else  if (passwordrules.complexity == 'lidl') {
+            suggestion = addNumber(suggestion);
+            suggestion = addRandomChar(suggestion, '@#$%ˆ&+=.:-!?');
             suggestion = addCapitalizedWord(suggestion);
         } else  {
             suggestion = addWord(suggestion);
         }
 
-        if (passwordrules.complexity == 'lidl') {
-            suggestion = addNumber(suggestion);
-            suggestion = addRandomChar(suggestion, '@#$%ˆ&+=.:-!?');
-            suggestion = addCapitalizedWord(suggestion);
-        }
+
 
         if (passwordrules.maximalLength == 0 || passwordrules.maximalLength > (suggestion.length + 8)) {
             suggestion = addWord(suggestion);

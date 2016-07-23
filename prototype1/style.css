@@ -5,6 +5,12 @@
   max-width: 500px;
 }
 
+.whitebg{
+  background-color:white;
+  background-color: rgb(255, 255, 255);
+  /* position: absolute; */
+  border-bottom: 1px solid #9c9c9c;
+}
 @media screen and (max-width: 650px) {
 
   .generator {

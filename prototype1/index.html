@@ -34,6 +34,7 @@
     <script src="directives/gpSuggestionCell.js"></script>
     <script src="directives/gpValidCounter.js"></script>
     <script src="controllers/refreshController.js"></script>
+    <script src="lib/sticky.js"></script>
 
 
 </head>
@@ -106,9 +107,17 @@
 
                     <input id="filter" type="text" class="form-control" placeholder="e.g. google" ng-model="search">
                 </div>
-                <button class="btn btn-primary pull-right" ng-disabled="password.length<1" ng-controller="RefreshController" ng-click="refreshSuggestions();"><span class="glyphicon glyphicon-refresh
-  " ></span> New Suggestions
-                </button>
+
+                
+                <div sticky sticky-class="whitebg" style="width: 100%;height:35px;">
+
+
+                    <button class="btn btn-primary pull-right" ng-disabled="password.length<1"
+                            ng-controller="RefreshController" ng-click="refreshSuggestions();"><span class="glyphicon glyphicon-refresh
+  "></span> New Suggestions
+                    </button>
+                </div>
+
                 <gp-website-grid></gp-website-grid>
 
             </div>

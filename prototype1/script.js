@@ -1,6 +1,6 @@
 ﻿'use sctrict';
 
-var app = angular.module('goldenPasswordApp', ['ngclipboard'])
+var app = angular.module('goldenPasswordApp', ['ngclipboard','sticky'])
     .controller('fetchGridData', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
         $rootScope.showSuggestions = [];
         $rootScope.suggestions = [];
