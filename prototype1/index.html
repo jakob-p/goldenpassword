@@ -106,7 +106,7 @@
 
                     <input id="filter" type="text" class="form-control" placeholder="e.g. google" ng-model="search">
                 </div>
-                <button class="btn btn-primary pull-right" ng-style="{'visibility': (password.length>0)?'visible':'hidden'}" ng-controller="RefreshController" ng-click="refreshSuggestions();"><span class="glyphicon glyphicon-refresh
+                <button class="btn btn-primary pull-right" ng-disabled="password.length<1" ng-controller="RefreshController" ng-click="refreshSuggestions();"><span class="glyphicon glyphicon-refresh
   " ></span> New Suggestions
                 </button>
                 <gp-website-grid></gp-website-grid>

@@ -1,7 +1,6 @@
 app.factory('passwordValidService', ['passwordRulesService', 'dictionaryService', '$rootScope', 'suggestionService', function (passwordRulesService, dictionaryService, $rootScope, suggestionService) {
 
 
-
     return function (password, passwordRules, index) {
         var state = passwordRulesService(password, passwordRules);
         var valid = isValid(state, password);
@@ -9,21 +8,25 @@ app.factory('passwordValidService', ['passwordRulesService', 'dictionaryService'
         setSuggestions();
         return valid;
 
-        function setSuggestions(){
-            if (!valid) {
-                var suggestion = '';
-                if (password.length > 0) {
-                    suggestion = suggestionService.getSuggestions(password, state, passwordRules);
-                }
+        function setSuggestions() {
+            var suggestion = '';
+            if (password.length > 0) {
+                suggestion = suggestionService.getSuggestions(password, state, passwordRules);
+            }
 
+            if (isValid(passwordRulesService(suggestion, passwordRules), suggestion)) {
+                $rootScope.suggestions[index] = suggestion;
+                $rootScope.showSuggestions[index] = true;
+            } else {
+                suggestion = '';
+                suggestion= suggestionService.addWord(suggestion);
+                suggestion = suggestionService.getSuggestions(suggestion, state, passwordRules);
                 if (isValid(passwordRulesService(suggestion, passwordRules), suggestion)) {
                     $rootScope.suggestions[index] = suggestion;
                     $rootScope.showSuggestions[index] = true;
                 } else {
                     $rootScope.showSuggestions[index] = false;
                 }
-            } else {
-                $rootScope.showSuggestions[index] = false;
             }
         }
 

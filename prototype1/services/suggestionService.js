@@ -1,30 +1,27 @@
-app.factory('suggestionService', function (dictionaryService,$rootScope,$http) {
+app.factory('suggestionService', function (dictionaryService, $rootScope, $http) {
 
     $rootScope.forbiddenChars = [];
 
 
-    for (var i = 0; i < 2; i++) {
-        $http.get('http://randomword.setgetgo.com/get.php').then(function (response) {
-            $rootScope.randomWords.push(response.data);
-        });
-    }
+    $http.get('https://crowdview.dk/auth/words?n=100').then(function (response) {
+        $rootScope.randomWords = response.data;
+    });
 
     function getSuggestions(password, state, passwordrules) {
 
         var suggestion = password;
 
-        if (passwordrules.dictionaryCheck == 'yes' && dictionaryService(suggestion)) {
-            suggestion = suggestion + $rootScope.randomWords[0];
-        }
 
-        if (passwordrules.complexity == '2class' || passwordrules.complexity == '3class' || passwordrules.complexity == 'bahn'|| passwordrules.complexity == 'outbrain') {
+        if (passwordrules.complexity == '2class' || passwordrules.complexity == '3class' || passwordrules.complexity == 'bahn' || passwordrules.complexity == 'outbrain') {
             suggestion = addNumber(suggestion);
             suggestion = addCapitalizedWord(suggestion);
+        } else if (passwordrules.maximalLength == 0 || passwordrules.maximalLength > (suggestion.length + 8)) {
+            suggestion = addWord(suggestion);
         }
 
         if (passwordrules.complexity == 'lidl') {
             suggestion = addNumber(suggestion);
-            suggestion = addRandomChar(suggestion,'@#$%ˆ&+=.:-!?');
+            suggestion = addRandomChar(suggestion, '@#$%ˆ&+=.:-!?');
             suggestion = addCapitalizedWord(suggestion);
         }
 
@@ -44,12 +41,14 @@ app.factory('suggestionService', function (dictionaryService,$rootScope,$http) {
     }
 
     function addWord(password) {
-        return password + $rootScope.randomWords[0];
+        var random = getRandomInt(0, 49);
+        return password + $rootScope.randomWords[random];
     }
 
 
     function addCapitalizedWord(password) {
-        return password + capitalizeFirstLetter($rootScope.randomWords[1]);
+        var random = getRandomInt(0, 49);
+        return password + capitalizeFirstLetter($rootScope.randomWords[random]);
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
@@ -60,10 +59,17 @@ app.factory('suggestionService', function (dictionaryService,$rootScope,$http) {
         return '' + number + password;
     }
 
-    function addRandomChar(password,allowedChars){
-           return allowedChars.charAt(Math.floor(Math.random() * allowedChars.length)) + password;
+    function addRandomChar(password, allowedChars) {
+        return allowedChars.charAt(Math.floor(Math.random() * allowedChars.length)) + password;
+    }
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
 
-    return {getSuggestions: getSuggestions}
+    return {
+        getSuggestions: getSuggestions,
+        addWord: addWord
+    }
 });
