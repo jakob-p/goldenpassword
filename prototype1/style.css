@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Lato');
 
+.show{
+  visibility: visible !important;
+}
 .generator {
   width: 100%;
   max-width: 500px;
