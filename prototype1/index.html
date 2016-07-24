@@ -98,11 +98,13 @@
         </div>
     </div>
 </div>
-<div class="section"></div>
 <div class="section">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <div class="alert alert-warning fade in" ng-hide="validCount<42">
+                    <span class="glyphicon glyphicon-info-sign"></span>    <span>Your password is valid on more then 50% of the top 100 webpages. It is not recommended to re-use passworts. You can use one of the given strong password suggestions that fit the password policies of the TOP 100 web pages's password policies. </span>
+                </div>
                 <div class="input-group mobilefilter"><span class="input-group-addon"><span
                         class="glyphicon glyphicon-search"></span> page </span>
 

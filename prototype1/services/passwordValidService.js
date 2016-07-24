@@ -1,5 +1,7 @@
 app.factory('passwordValidService', ['passwordRulesService', 'dictionaryService', '$rootScope', 'suggestionService', function (passwordRulesService, dictionaryService, $rootScope, suggestionService) {
 
+    $rootScope.validCount=0;
+
 
     return function (password, passwordRules, index) {
         var state = passwordRulesService(password, passwordRules);

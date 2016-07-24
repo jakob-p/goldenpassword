@@ -1,4 +1,4 @@
-app.directive('gpValidCounter', ['passwordValidService', function (passwordValidService) {
+app.directive('gpValidCounter', ['passwordValidService','$rootScope', function (passwordValidService,$rootScope) {
     return {
         restrict: 'E',
         scope: {
@@ -6,16 +6,17 @@ app.directive('gpValidCounter', ['passwordValidService', function (passwordValid
         },
         link: function (scope, elmt, attrs) {
             scope.$watch('password', function (newValue, oldValue) {
-                scope.validCount = 0;
-                scope.invalideCount = 0;
+                $rootScope.validCount = 0;
+                $rootScope.invalideCount = 0;
 
                 for( var i = 0; i < scope.$parent.gridData.passwordRuleObjects.length; i++) {
                     if (passwordValidService(scope.password, 
                         scope.$parent.gridData.passwordRuleObjects[i].passwordRules)) {
-                        scope.validCount++;
+                        $rootScope.validCount++;
+
                     }
                     else {
-                        scope.invalideCount++;
+                        $rootScope.invalideCount++;
                     }
                 }
                 
