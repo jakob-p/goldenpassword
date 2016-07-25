@@ -4,9 +4,9 @@
   outline: solid #2f2f2f 2px !important;
 }
 
-.flag--denmark{
-@extend %flag;
-  background: cross(red, white);
+
+.flag--denmark {
+  background: linear-gradient(90deg, transparent 28%, white 28%, white 34%, transparent 34%), linear-gradient(transparent 42%, red 42%, red 46%, white 46%, white 58%, red 58%, red 62%, transparent 62%), linear-gradient(90deg, red 25%, red 25%, red 28%, white 28%, white 34%, red 34%, red 37%, red 37%);
 }
 
 .disabledflag {
