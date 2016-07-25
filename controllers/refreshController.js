@@ -4,6 +4,7 @@ app.controller('RefreshController', ['$scope','$rootScope','$q','$http', functio
 
     $scope.setLang = function(lang){
         $scope.language = lang;
+        $scope.refreshSuggestions();
     }
 
         $scope.refreshSuggestions = function () {
