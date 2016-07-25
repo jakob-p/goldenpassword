@@ -3,7 +3,7 @@ app.factory('suggestionService', function (dictionaryService, $rootScope, $http)
     $rootScope.forbiddenChars = [];
 
 
-    $http.get('https://crowdview.dk/auth/words?n=100').then(function (response) {
+    $http.get('https://crowdview.dk/auth/words?lang=de&n=100').then(function (response) {
         $rootScope.randomWords = response.data;
     });
 
@@ -53,13 +53,13 @@ app.factory('suggestionService', function (dictionaryService, $rootScope, $http)
     }
 
     function addWord(password) {
-        var random = getRandomInt(0, 49);
+        var random = getRandomInt(0, 99);
         return password + $rootScope.randomWords[random];
     }
 
 
     function addCapitalizedWord(password) {
-        var random = getRandomInt(0, 49);
+        var random = getRandomInt(0, 99);
         return password + capitalizeFirstLetter($rootScope.randomWords[random]);
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
