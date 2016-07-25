@@ -11,7 +11,6 @@ app.controller('RefreshController', ['$scope','$rootScope','$q','$http', functio
 
             $http.get('https://crowdview.dk/auth/words?lang='+$scope.language+'&n=100').then(function (response) {
                 $rootScope.randomWords=response.data;
-                console.log($rootScope.randomWords,' length ',$rootScope.randomWords.length)
                 $rootScope.$broadcast('words-refreshed');
             });
 
