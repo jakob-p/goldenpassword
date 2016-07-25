@@ -4,6 +4,11 @@
   outline: solid #2f2f2f 2px !important;
 }
 
+.flag--denmark{
+@extend %flag;
+  background: cross(red, white);
+}
+
 .disabledflag {
   pointer-events: none;
   cursor: not-allowed;
